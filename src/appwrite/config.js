@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-catch */
 
 import confi from "../conf/confi";
 import {Client, Databases, ID, Storage, Query} from "appwrite";
