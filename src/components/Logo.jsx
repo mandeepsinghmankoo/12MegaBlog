@@ -1,10 +1,11 @@
 import React from 'react'
+import LOGO from '../../public/logo.png'
 
-function Logo({width = '100px'}) {
+function Logo() {
   return (
-    <div>
-      <div>LOGO</div>
-    </div>
+    
+        <img src={LOGO} alt="Logo" className="w-42 h-auto " />
+      
   )
 }
 

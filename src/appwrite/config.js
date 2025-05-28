@@ -50,7 +50,7 @@ export class Service{
         }
     }
 
-    async deleteost(slug){
+    async deletePost(slug){
         try {
             await this.databases.deleteDocument(
                 confi.appwriteDatabaseId,
@@ -61,7 +61,7 @@ export class Service{
             return true;
         } catch (error) {
             throw error;
-            return false;
+// This line is unreachable due to the throw statement above
         }
     }
 
@@ -85,10 +85,8 @@ export class Service{
                 confi.appwriteCollectionId,
                 queries
             )
-            return true;
         } catch (error) {
             throw error;
-            return false;
         }
     }
 
@@ -99,10 +97,8 @@ export class Service{
                 ID.unique(),
                 file
             )
-            return true;
         } catch (error) {
             throw error;
-            return false;
 
         }
     }
@@ -116,20 +112,18 @@ export class Service{
             return true
         } catch (error) {
             throw error;
-            return false;
         }
     }
 
     getFilePreview(fileId){
-        try {
-            return this.bucket.getFilePreview(
-                confi.appwriteBucketId,
-                fileId
-            )
-        } catch (error) {
-            throw error;
-            
+        if (!fileId) {
+            return null;
         }
+        
+        return this.bucket.getFileView(
+            confi.appwriteBucketId,
+            fileId
+        );
     }
 
 }
